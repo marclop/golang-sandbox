@@ -16,6 +16,7 @@ func main() {
 	robot := new(Robot)
 	robot.Name = "Bender"
 	robot.Talk()
+	fmt.Println(totalArea(&c, &r))
 }
 
 // Circle shape
@@ -58,4 +59,29 @@ func (p *Person) Talk() {
 type Robot struct {
 	Person
 	Model string
+}
+
+// Shape interface
+type Shape interface {
+	area() float64
+}
+
+// Use the previously created interface
+func totalArea(shapes ...Shape) (area float64) {
+	for _, s := range shapes {
+		area += s.area()
+	}
+	return
+}
+
+// MultiShape containing Shape as field of struct
+type MultiShape struct {
+	shapes []Shape
+}
+
+func (m *MultiShape) area() (area float64) {
+	for _, s := range m.shapes {
+		area += s.area()
+	}
+	return
 }
