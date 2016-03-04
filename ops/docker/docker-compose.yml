@@ -1,0 +1,11 @@
+golang:
+  #build: golang
+  image: golang:1.6.0-alpine
+  command: sleep 9999999999
+  volumes:
+    - ../../:/app/golang
+  environment:
+    AWS_ACCESS_KEY_ID:
+    AWS_SECRET_ACCESS_KEY:
+    AWS_DEFAULT_REGION:
+    APP_ENV: dev
